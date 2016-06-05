@@ -14,9 +14,11 @@ lazy val root = (project in file(".")).
       "com.typesafe.scala-logging" %% "scala-logging" % "3.4.0"
     ),
     dependencyOverrides ++= Set(
+      // some libraries use the latest sdk dependencies, so we need to downgrade them
       "com.amazonaws" % "aws-java-sdk" % "1.10.33",
       "com.amazonaws" % "aws-java-sdk-core" % "1.10.33"
-    )  )
+    )
+  )
 
 assemblyMergeStrategy in assembly := {
   case PathList("META-INF", xs@_*) => MergeStrategy.discard
